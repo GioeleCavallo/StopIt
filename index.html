@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>StopIt - Smetti di fumare con il sorriso ☀️</title>
+
+    <!-- PWA Manifest (kept for icons/theme but SW disabled) -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#FFFBE6">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="StopIt">
+    <link rel="apple-touch-icon" href="assets/img/icon-192.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Poppins:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/design.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/views.css">
+</head>
+
+<body>
+    <!-- 1. LOADING SCREEN -->
+    <div id="loading-screen" class="view-container flex-center bg-cream">
+        <div class="text-center">
+            <div class="logo-spinner">☀️</div>
+            <h1 class="logo-text">StopIt</h1>
+            <p class="text-secondary fade-in">Caricamento...</p>
+        </div>
+    </div>
+
+    <!-- 2. AUTH SCREEN -->
+    <div id="auth-screen" class="view-container hidden bg-cream scrollable">
+        <div class="auth-container p-lg">
+            <div class="text-center mb-xl">
+                <div class="logo-large">☀️</div>
+                <h1>Benvenuta in StopIt</h1>
+                <p class="text-secondary">Il tuo viaggio verso la libertà inizia qui.</p>
+            </div>
+
+            <!-- Login Form -->
+            <div id="login-form" class="card fade-in">
+                <h2 class="mb-lg">Bentornata!</h2>
+                <form id="form-login">
+                    <div class="form-group">
+                        <label>Nome Utente</label>
+                        <input type="text" id="login-username" class="form-input" required autocomplete="username">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="login-password" class="form-input" required
+                            autocomplete="current-password">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block btn-lg">Accedi</button>
+                </form>
+                <div class="text-center mt-md">
+                    <p>Non hai un account? <a href="#" id="show-register" class="text-primary font-bold">Registrati</a>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Register Form -->
+            <div id="register-form" class="card fade-in hidden">
+                <h2 class="mb-lg">Crea Account</h2>
+                <form id="form-register">
+                    <div class="form-group">
+                        <label>Scegli Nome Utente</label>
+                        <input type="text" id="reg-username" class="form-input" required autocomplete="username">
+                    </div>
+                    <div class="form-group">
+                        <label>Password (min. 8 caratteri)</label>
+                        <input type="password" id="reg-password" class="form-input" required minlength="8"
+                            autocomplete="new-password">
+                    </div>
+                    <div class="form-group">
+                        <label>Conferma Password</label>
+                        <input type="password" id="reg-password-confirm" class="form-input" required minlength="8"
+                            autocomplete="new-password">
+                    </div>
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="reg-privacy" required>
+                        <label for="reg-privacy">Accetto che i miei dati siano salvati solo su questo dispositivo
+                            (criptati).</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block btn-lg">Inizia il Viaggio</button>
+                </form>
+                <div class="text-center mt-md">
+                    <p>Hai già un account? <a href="#" id="show-login" class="text-primary font-bold">Accedi</a></p>
+                </div>
+            </div>
+
+            <div class="text-center mt-xl text-secondary text-sm">
+                <p>🔒 I tuoi dati sono criptati e salvati solo qui.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. MAIN APP -->
+    <div id="main-app" class="view-container hidden bg-cream">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-logo">☀️ StopIt</div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main id="main-view" class="main-content scrollable">
+            <!-- Dynamic Content Loaded Here -->
+        </main>
+
+        <!-- Floating Action Button (SOS) -->
+        <button id="btn-sos" class="fab-sos glow-pulse">SOS</button>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <a href="#" class="nav-item active" data-view="dashboard">
+                <div class="nav-icon">🏠</div>
+                <span>Home</span>
+            </a>
+            <a href="#" class="nav-item" data-view="craving">
+                <div class="nav-icon">📝</div>
+                <span>Log</span>
+            </a>
+            <a href="#" class="nav-item" data-view="stats">
+                <div class="nav-icon">📊</div>
+                <span>Stats</span>
+            </a>
+            <a href="#" class="nav-item" data-view="badges">
+                <div class="nav-icon">🏆</div>
+                <span>Premi</span>
+            </a>
+            <a href="#" class="nav-item" data-view="profile">
+                <div class="nav-icon">👤</div>
+                <span>Profilo</span>
+            </a>
+        </nav>
+    </div>
+
+    <!-- Modals Container -->
+    <div id="modals-container"></div>
+
+    <!-- SCRIPTS - ORDER MATTERS -->
+    <script src="assets/js/namespace.js"></script>
+    <script src="assets/js/crypto.js"></script>
+    <script src="assets/js/db.js"></script>
+    <script src="assets/js/auth.js"></script>
+    <script src="assets/js/state.js"></script>
+
+    <!-- Utils -->
+    <script src="assets/js/utils/calculations.js"></script>
+    <script src="assets/js/utils/triggers.js"></script>
+    <script src="assets/js/utils/badges-engine.js"></script>
+    <script src="assets/js/utils/notifications.js"></script> <!-- NEW -->
+    <script src="assets/js/utils/modals.js"></script> <!-- NEW -->
+
+    <!-- Views (Full Implementation) -->
+    <script src="assets/js/views/dashboard.js"></script>
+    <script src="assets/js/views/craving.js"></script>
+    <script src="assets/js/views/stats.js"></script>
+    <script src="assets/js/views/badges.js"></script>
+    <script src="assets/js/views/profile.js"></script>
+    <script src="assets/js/views/onboarding.js"></script>
+    <script src="assets/js/views/plans.js"></script>
+    <script src="assets/js/views/calendar.js"></script>
+    <script src="assets/js/views/tutorial.js"></script>
+    <!-- (placeholders.js successfully removed) -->
+
+    <!-- Core -->
+    <script src="assets/js/app.js"></script>
+
+</body>
+
+</html>

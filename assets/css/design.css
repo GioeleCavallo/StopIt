@@ -1,0 +1,252 @@
+/* ============================================
+   STOPIT DESIGN SYSTEM - "Soft Sunflower"
+   Design per ragazze 22-25 anni, colore giallo
+   ============================================ */
+
+/* === CSS VARIABLES (Design Tokens) === */
+:root {
+    /* Primary Colors */
+    --color-primary: #F4D03F;           /* Giallo Sole - warm, optimistic */
+    --color-primary-light: #F9E79F;     /* Giallo chiaro per hover */
+    --color-primary-dark: #F1C40F;      /* Giallo scuro per accenti */
+    --color-primary-pale: #FEF9E7;      /* Giallo palissimo per backgrounds */
+    
+    /* Secondary & Text */
+    --color-secondary: #2C3E50;         /* Antracite bluastro - elegant contrast */
+    --color-text-primary: #2C3E50;
+    --color-text-secondary: #7F8C8D;
+    --color-text-light: #95A5A6;
+    
+    /* Background */
+    --color-bg-main: #FFFBE6;           /* Crema tenue - warm feel */
+    --color-bg-card: #FFFFFF;
+    --color-bg-overlay: rgba(44, 62, 80, 0.95);
+    
+    /* Accent Colors */
+    --color-success: #27AE60;           /* Verde natura */
+    --color-success-light: #2ECC71;
+    --color-warning: #F39C12;           /* Arancione caldo */
+    --color-danger: #E74C3C;            /* Rosso corallo - SOS */
+    --color-info: #3498DB;              /* Blu informativo */
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, #F4D03F 0%, #F39C12 100%);
+    --gradient-success: linear-gradient(135deg, #27AE60 0%, #2ECC71 100%);
+    --gradient-card: linear-gradient(145deg, #FFFFFF 0%, #FEF9E7 100%);
+    --gradient-overlay: linear-gradient(180deg, rgba(244, 208, 63, 0.1) 0%, rgba(255, 251, 230, 0.3) 100%);
+    
+    /* Shadows */
+    --shadow-sm: 0 2px 4px rgba(44, 62, 80, 0.08);
+    --shadow-md: 0 4px 12px rgba(44, 62, 80, 0.12);
+    --shadow-lg: 0 8px 24px rgba(44, 62, 80, 0.15);
+    --shadow-xl: 0 12px 40px rgba(44, 62, 80, 0.2);
+    --shadow-glow: 0 0 20px rgba(244, 208, 63, 0.4);
+    
+    /* Typography */
+    --font-primary: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-heading: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    
+    --font-size-xs: 0.75rem;    /* 12px */
+    --font-size-sm: 0.875rem;   /* 14px */
+    --font-size-base: 1rem;     /* 16px */
+    --font-size-lg: 1.125rem;   /* 18px */
+    --font-size-xl: 1.25rem;    /* 20px */
+    --font-size-2xl: 1.5rem;    /* 24px */
+    --font-size-3xl: 2rem;      /* 32px */
+    --font-size-4xl: 2.5rem;    /* 40px */
+    --font-size-5xl: 3rem;      /* 48px */
+    
+    --font-weight-light: 300;
+    --font-weight-normal: 400;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --font-weight-extrabold: 800;
+    
+    --line-height-tight: 1.2;
+    --line-height-normal: 1.5;
+    --line-height-relaxed: 1.75;
+    
+    /* Spacing */
+    --spacing-xs: 0.25rem;   /* 4px */
+    --spacing-sm: 0.5rem;    /* 8px */
+    --spacing-md: 1rem;      /* 16px */
+    --spacing-lg: 1.5rem;    /* 24px */
+    --spacing-xl: 2rem;      /* 32px */
+    --spacing-2xl: 3rem;     /* 48px */
+    --spacing-3xl: 4rem;     /* 64px */
+    
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --radius-full: 9999px;
+    
+    /* Transitions */
+    --transition-fast: 150ms ease-in-out;
+    --transition-base: 250ms ease-in-out;
+    --transition-slow: 400ms ease-in-out;
+    
+    /* Z-index layers */
+    --z-base: 1;
+    --z-dropdown: 100;
+    --z-sticky: 200;
+    --z-fixed: 300;
+    --z-modal-backdrop: 400;
+    --z-modal: 500;
+    --z-toast: 600;
+    
+    /* Layout */
+    --header-height: 60px;
+    --bottom-nav-height: 64px;
+    --max-width-content: 640px;
+    --max-width-wide: 1024px;
+}
+
+/* === RESET & BASE STYLES === */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+body {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-normal);
+    line-height: var(--line-height-normal);
+    color: var(--color-text-primary);
+    background-color: var(--color-bg-main);
+    overflow-x: hidden;
+}
+
+/* === TYPOGRAPHY === */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tight);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-md);
+}
+
+h1 {
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-weight-extrabold);
+}
+
+h2 {
+    font-size: var(--font-size-3xl);
+}
+
+h3 {
+    font-size: var(--font-size-2xl);
+}
+
+h4 {
+    font-size: var(--font-size-xl);
+}
+
+h5 {
+    font-size: var(--font-size-lg);
+}
+
+h6 {
+    font-size: var(--font-size-base);
+}
+
+p {
+    margin-bottom: var(--spacing-md);
+    line-height: var(--line-height-relaxed);
+}
+
+a {
+    color: var(--color-primary-dark);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+a:hover {
+    color: var(--color-primary);
+}
+
+small {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
+strong, b {
+    font-weight: var(--font-weight-bold);
+}
+
+/* === UTILITY CLASSES === */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.text-primary { color: var(--color-primary); }
+.text-secondary { color: var(--color-text-secondary); }
+.text-success { color: var(--color-success); }
+.text-danger { color: var(--color-danger); }
+.text-warning { color: var(--color-warning); }
+
+.bg-primary { background-color: var(--color-primary); }
+.bg-success { background-color: var(--color-success); }
+.bg-card { background-color: var(--color-bg-card); }
+
+.hidden { display: none !important; }
+.visible { display: block !important; }
+
+.mt-xs { margin-top: var(--spacing-xs); }
+.mt-sm { margin-top: var(--spacing-sm); }
+.mt-md { margin-top: var(--spacing-md); }
+.mt-lg { margin-top: var(--spacing-lg); }
+.mt-xl { margin-top: var(--spacing-xl); }
+
+.mb-xs { margin-bottom: var(--spacing-xs); }
+.mb-sm { margin-bottom: var(--spacing-sm); }
+.mb-md { margin-bottom: var(--spacing-md); }
+.mb-lg { margin-bottom: var(--spacing-lg); }
+.mb-xl { margin-bottom: var(--spacing-xl); }
+
+.p-xs { padding: var(--spacing-xs); }
+.p-sm { padding: var(--spacing-sm); }
+.p-md { padding: var(--spacing-md); }
+.p-lg { padding: var(--spacing-lg); }
+.p-xl { padding: var(--spacing-xl); }
+
+/* === SCROLLBAR STYLING === */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-bg-main);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-primary-light);
+    border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary);
+}
+
+/* === SELECTION === */
+::selection {
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+}
+
+::-moz-selection {
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+}
